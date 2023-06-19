@@ -1,0 +1,24 @@
+---
+layout: base.njk
+title: 'Music'
+pageClass: music-list
+---
+
+<h2>Music</h2>
+
+<p>The following audio files are currently available for listening.</p>
+
+{% for source in collections.musicSources %}
+  <h3>{{source}}</h3>
+
+  <ul>
+    {% for entry in collections.music %}
+      {% if entry.data.Source === source %}
+        <li>
+          <a href="{{ entry.url }}">{{ entry.data.Title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+{% endfor %}

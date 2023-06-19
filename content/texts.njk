@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: 'Texts'
+pageClass: text-list
+permalink: '/texts/'
+---
+
+<h2>Texts</h2>
+
+<p>The following texts are currently available for reading.</p>
+
+  <ul>
+    {% for entry in collections.texts %}
+        <li>
+          <a href="{{ entry.url }}">{{ entry.data.Title }}</a>
+        </li>
+    {% endfor %}
+  </ul>

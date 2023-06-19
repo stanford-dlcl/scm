@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="{{ metadata.language }}">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title or metadata.title }}</title>
+	<meta name="robots" content="noindex" />
+    <meta name="description" content="{{ description or metadata.description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {%- css %}
+    {% include "styles/reset.css" %}
+    {% include "styles/utils.css" %}
+    {% include "node_modules/@fontsource/gravitas-one/index.css" %}
+    {% include "node_modules/@fontsource/gentium-plus/index.css" %}
+    {% include "styles/base.css" %}
+    {% endcss %}
+    <link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+  </head>
+  <body{% if (pageClass) %} class="{{ pageClass }}"{% endif %}>
+    <a href="#main" class="visually-hidden">Skip to main content</a>
+    <header role="banner">
+      <h1>{{ metadata.title }}</h1>
+      <h2>{{ metadata.description }}</h2>
+    </header>
+    <nav>
+      <ul>
+        <li>
+          <a href="/"{% if (page.url === "/") %} class="current"{% endif %}>Home</a>
+        </li>
+        <li>
+          <a href="/texts/"{% if (page.url === "/texts/") %} class="current"{% endif %}>Texts</a>
+        </li>
+        <li>
+          <a href="/music/"{% if (page.url === "/music/") %} class="current"{% endif %}>Music</a>
+        </li>
+      </ul>
+    </nav>
+    <main id="main">{{ content | safe }}</main>
+    <footer>
+      <div>&copy; 2023 {{metadata.title}}</div>
+    </footer>
+
+  </body>
+</html>
